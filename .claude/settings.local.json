@@ -18,7 +18,9 @@
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(jq:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebFetch(domain:www.yelp.com)",
+      "WebSearch"
     ]
   }
 }
