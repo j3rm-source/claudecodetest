@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nail Nook and More — Premier Nail Salon in Lake Havasu City, AZ. Book your appointment online.">
+  <title>Nail Nook and More | Lake Havasu City, AZ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* === RESET & ROOT VARIABLES === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:          #fff8f9;
+      --color-surface:     #fff0f3;
+      --color-surface-alt: #fce8ed;
+      --color-rose:        #d4849a;
+      --color-rose-light:  #f0b8c8;
+      --color-gold:        #b87a8a;
+      --color-gold-dark:   #8c5a68;
+      --color-text:        #2d1a22;
+      --color-text-muted:  #7a5060;
+      --color-success:     #6aab88;
+      --color-error:       #c0524a;
+      --shadow-soft:       0 4px 20px rgba(180,120,138,0.12);
+      --shadow-card:       0 2px 12px rgba(180,120,138,0.1);
+      --radius:            12px;
+      --transition:        0.3s ease;
+      --nav-height:        72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === TYPOGRAPHY === */
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--color-rose));
+    }
+    .ornament::after { background: linear-gradient(to left, transparent, var(--color-rose)); }
+    .ornament i { color: var(--color-rose); font-size: 0.9rem; }
+
+    /* === LAYOUT === */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 6rem 0; }
+
+    /* === BUTTONS === */
+    .btn-primary, .btn-secondary, .btn-ghost {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .btn-primary {
+      background: var(--color-rose);
+      color: #fff;
+      border-color: var(--color-rose);
+    }
+    .btn-primary:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(180,120,138,0.3);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-gold-dark);
+      border-color: var(--color-gold);
+    }
+    .btn-secondary:hover {
+      background: var(--color-rose);
+      color: #fff;
+      border-color: var(--color-rose);
+      transform: translateY(-2px);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text-muted);
+      border-color: transparent;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    .btn-ghost:hover { color: var(--color-rose); }
+
+    /* === NAVIGATION === */
+    #main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      background: rgba(255, 248, 249, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-rose-light);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 16px rgba(180,120,138,0.08);
+    }
+    #main-nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--color-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo i { color: var(--color-rose); font-size: 1.1rem; }
+    .nav-logo span { color: var(--color-gold-dark); }
+
+    #nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    #nav-links a {
+      text-decoration: none;
+      color: var(--color-text-muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+      position: relative;
+    }
+    #nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--color-rose);
+      transition: width var(--transition);
+    }
+    #nav-links a:hover { color: var(--color-rose); }
+    #nav-links a:hover::after { width: 100%; }
+    #nav-links .nav-book a {
+      background: var(--color-rose);
+      color: #fff;
+      padding: 0.45rem 1.2rem;
+      border-radius: 6px;
+    }
+    #nav-links .nav-book a::after { display: none; }
+    #nav-links .nav-book a:hover { background: var(--color-gold); color: #fff; }
+
+    #hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    #hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    /* === HERO === */
+    #hero {
+      min-height: 100vh;
+      padding-top: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(212,132,154,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(184,122,138,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(240,184,200,0.08) 0%, transparent 70%),
+        var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle, rgba(212,132,154,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--color-surface-alt);
+      color: var(--color-gold-dark);
+      border: 1px solid var(--color-rose-light);
+      padding: 0.35rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-title .line1 { color: var(--color-text); display: block; }
+    .hero-title .line2 { color: var(--color-rose); display: block; font-style: italic; }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .hero-deco {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-deco-1 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(212,132,154,0.12) 0%, transparent 70%);
+      top: 10%; right: 5%;
+      animation: float 7s ease-in-out infinite;
+    }
+    .hero-deco-2 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(184,122,138,0.1) 0%, transparent 70%);
+      bottom: 15%; left: 5%;
+      animation: float 5s ease-in-out infinite reverse;
+      animation-delay: -2s;
+    }
+    .hero-deco-3 {
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(240,184,200,0.15) 0%, transparent 70%);
+      top: 40%; left: 10%;
+      animation: float 9s ease-in-out infinite;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* === SERVICES === */
+    #services { background: var(--color-surface-alt); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--color-bg);
+      border: 1px solid rgba(212,132,154,0.2);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      transition: all var(--transition);
+      cursor: default;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .service-card:hover {
+      border-color: var(--color-rose);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(212,132,154,0.18);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--color-surface-alt);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .service-icon i { color: var(--color-rose); font-size: 1.2rem; }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--color-text);
+      margin-bottom: 0.3rem;
+    }
+    .service-price {
+      font-size: 0.85rem;
+      color: var(--color-gold-dark);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.6rem;
+    }
+    .service-desc { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; }
+
+    /* === ABOUT === */
+    #about { background: var(--color-bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-frame {
+      position: relative;
+      padding: 2.5rem;
+    }
+    .about-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: calc(100% - 24px);
+      height: calc(100% - 24px);
+      border: 2px solid var(--color-rose-light);
+      border-radius: var(--radius);
+    }
+    .about-frame::after {
+      content: '';
+      position: absolute;
+      top: 24px; left: 24px;
+      width: calc(100% - 24px);
+      height: calc(100% - 24px);
+      background: var(--color-surface-alt);
+      border-radius: var(--radius);
+      z-index: 0;
+    }
+    .about-frame-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .about-frame-inner .big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--color-rose-light);
+      line-height: 1;
+      display: block;
+    }
+    .about-frame-inner p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      line-height: 1.7;
+    }
+    .about-frame-inner .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--color-rose);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+    .about-text h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+    .about-text p { color: var(--color-text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
+    .about-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .about-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+    .about-bullets li i { color: var(--color-success); font-size: 0.9rem; flex-shrink: 0; }
+
+    /* === BOOKING === */
+    #booking { background: var(--color-surface-alt); }
+
+    .booking-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    #booking-form {
+      background: var(--color-bg);
+      border: 1px solid rgba(212,132,154,0.2);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .form-group:last-of-type { margin-bottom: 0; }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(212,132,154,0.3);
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      background: var(--color-surface);
+      transition: border-color var(--transition);
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-rose);
+      box-shadow: 0 0 0 3px rgba(212,132,154,0.12);
+    }
+    .form-group input.invalid,
+    .form-group select.invalid,
+    .form-group textarea.invalid {
+      border-color: var(--color-error);
+      animation: shake 0.3s ease;
+    }
+    .field-error {
+      font-size: 0.8rem;
+      color: var(--color-error);
+      display: none;
+    }
+    .field-error.show { display: block; }
+
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b87a8a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .form-submit { margin-top: 1.8rem; text-align: center; }
+    .form-submit .btn-primary { width: 100%; padding: 1rem; font-size: 1rem; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    /* === CONFIRMATION SCREEN === */
+    #booking-confirmation {
+      background: var(--color-bg);
+      border: 1px solid rgba(106,171,136,0.3);
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .confirm-icon { font-size: 4rem; color: var(--color-success); margin-bottom: 1rem; }
+    .confirm-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .confirm-sub { color: var(--color-text-muted); margin-bottom: 2rem; }
+    .confirm-summary {
+      background: var(--color-surface-alt);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .confirm-summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(212,132,154,0.15);
+      font-size: 0.92rem;
+    }
+    .confirm-summary-row:last-child { border-bottom: none; }
+    .confirm-summary-row .label { color: var(--color-text-muted); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.03em; }
+    .confirm-summary-row .value { color: var(--color-text); }
+    .confirm-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* === MY APPOINTMENTS === */
+    #my-appointments {
+      max-width: 680px;
+      margin: 2rem auto 0;
+    }
+    #my-appointments h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #my-appointments h3 i { color: var(--color-rose); }
+    .appt-card {
+      background: var(--color-bg);
+      border: 1px solid rgba(212,132,154,0.2);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: opacity 0.3s ease;
+    }
+    .appt-card.removing { opacity: 0; }
+    .appt-info { flex: 1; }
+    .appt-service {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--color-text);
+      margin-bottom: 0.3rem;
+    }
+    .appt-meta { font-size: 0.85rem; color: var(--color-text-muted); }
+    .appt-cancel {
+      background: none;
+      border: 1px solid rgba(192,82,74,0.3);
+      color: var(--color-error);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-family: 'Lato', sans-serif;
+      cursor: pointer;
+      transition: all var(--transition);
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    .appt-cancel:hover { background: var(--color-error); color: #fff; }
+    .appt-empty { text-align: center; color: var(--color-text-muted); padding: 2rem; font-style: italic; }
+
+    /* === LOCATION === */
+    #location { background: var(--color-bg); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .location-info {
+      background: var(--color-surface);
+      border: 1px solid rgba(212,132,154,0.2);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .location-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-text);
+    }
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      align-items: flex-start;
+    }
+    .info-item i {
+      color: var(--color-rose);
+      font-size: 0.95rem;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+      width: 16px;
+      text-align: center;
+    }
+    .info-item .info-text { font-size: 0.92rem; color: var(--color-text-muted); }
+    .info-item .info-text strong { color: var(--color-text); display: block; margin-bottom: 0.2rem; }
+
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    .hours-table td { padding: 0.3rem 0; font-size: 0.88rem; color: var(--color-text-muted); }
+    .hours-table td:last-child { text-align: right; color: var(--color-text); }
+
+    .map-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(212,132,154,0.2);
+    }
+    .map-container iframe {
+      display: block;
+      width: 100%;
+      height: 420px;
+      filter: sepia(10%) saturate(1.1);
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: #2d1a22;
+      color: rgba(255,248,249,0.7);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { color: rgba(255,248,249,0.9); margin-bottom: 1rem; display: flex; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      color: rgba(255,248,249,0.9);
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      text-decoration: none;
+      color: rgba(255,248,249,0.6);
+      font-size: 0.88rem;
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--color-rose-light); }
+    .social-links { display: flex; gap: 0.8rem; margin-top: 1rem; }
+    .social-links a {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,248,249,0.7);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all var(--transition);
+    }
+    .social-links a:hover { background: var(--color-rose); color: #fff; transform: translateY(-2px); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,248,249,0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    /* === CHATBOT WIDGET === */
+    #chatbot-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 900;
+      width: 58px; height: 58px;
+      background: var(--color-rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(212,132,154,0.5);
+      transition: all var(--transition);
+      border: none;
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+    #chatbot-toggle:hover { background: var(--color-gold); transform: scale(1.08); }
+    #chatbot-toggle i { color: #fff; font-size: 1.4rem; }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 4px 20px rgba(212,132,154,0.5); }
+      50% { box-shadow: 0 4px 30px rgba(212,132,154,0.8), 0 0 0 10px rgba(212,132,154,0.1); }
+    }
+
+    #chatbot-panel {
+      position: fixed;
+      bottom: 6.5rem;
+      right: 2rem;
+      z-index: 900;
+      width: 360px;
+      max-height: 520px;
+      background: var(--color-bg);
+      border: 1px solid rgba(212,132,154,0.25);
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(180,120,138,0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.85) translateY(20px);
+      transform-origin: bottom right;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    #chatbot-panel.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .chat-header-info { display: flex; align-items: center; gap: 0.7rem; }
+    .chat-avatar {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-avatar i { color: #fff; font-size: 1rem; }
+    .chat-header-title { color: #fff; font-family: 'Playfair Display', serif; font-size: 1rem; }
+    .chat-header-sub { color: rgba(255,255,255,0.8); font-size: 0.75rem; }
+    .chat-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 4px;
+      transition: color var(--transition);
+    }
+    .chat-close:hover { color: #fff; }
+
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-track { background: transparent; }
+    #chat-messages::-webkit-scrollbar-thumb { background: var(--color-rose-light); border-radius: 2px; }
+
+    .chat-msg {
+      max-width: 85%;
+      padding: 0.65rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      animation: msgIn 0.2s ease;
+    }
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-msg.bot {
+      background: var(--color-surface);
+      border: 1px solid rgba(212,132,154,0.2);
+      border-radius: 4px 12px 12px 12px;
+      border-left: 3px solid var(--color-rose);
+      align-self: flex-start;
+      color: var(--color-text);
+    }
+    .chat-msg.user {
+      background: var(--color-rose);
+      color: #fff;
+      border-radius: 12px 4px 12px 12px;
+      align-self: flex-end;
+    }
+    .chat-msg.bot a { color: var(--color-gold-dark); font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 0.65rem 0.9rem;
+      background: var(--color-surface);
+      border: 1px solid rgba(212,132,154,0.2);
+      border-left: 3px solid var(--color-rose);
+      border-radius: 4px 12px 12px 12px;
+      align-self: flex-start;
+      width: fit-content;
+    }
+    .typing-indicator span {
+      width: 7px; height: 7px;
+      background: var(--color-rose-light);
+      border-radius: 50%;
+      animation: typing 1.2s ease-in-out infinite;
+    }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    #chat-quick-replies {
+      padding: 0.5rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .quick-reply-btn {
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid var(--color-gold);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--color-gold-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .quick-reply-btn:hover { background: var(--color-rose); border-color: var(--color-rose); color: #fff; }
+
+    #chat-input-area {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid rgba(212,132,154,0.15);
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    #chat-input {
+      flex: 1;
+      padding: 0.6rem 0.9rem;
+      border: 1.5px solid rgba(212,132,154,0.3);
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      color: var(--color-text);
+      background: var(--color-surface);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    #chat-input:focus { border-color: var(--color-rose); }
+    #chat-send {
+      padding: 0.6rem 1rem;
+      background: var(--color-rose);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background var(--transition);
+    }
+    #chat-send:hover { background: var(--color-gold); }
+
+    /* === SCROLL ANIMATIONS === */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* === UTILITY === */
+    .hidden { display: none !important; }
+    .text-rose { color: var(--color-rose); }
+    .text-gold { color: var(--color-gold-dark); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      section { padding: 4rem 0; }
+      .container { padding: 0 1.2rem; }
+
+      #hamburger { display: flex; }
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0; right: 0;
+        background: rgba(255,248,249,0.98);
+        border-bottom: 1px solid var(--color-rose-light);
+        padding: 1.5rem;
+        gap: 1.2rem;
+        box-shadow: 0 8px 24px rgba(180,120,138,0.1);
+      }
+      #nav-links.open { display: flex; }
+      #nav-links .nav-book { text-align: center; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .location-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      #chatbot-panel { width: calc(100vw - 2rem); right: 1rem; bottom: 5.5rem; }
+      #chatbot-toggle { right: 1rem; bottom: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-secondary { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="main-nav">
+    <div class="container">
+      <a class="nav-logo" href="#hero">
+        <i class="fa-solid fa-hand-sparkles" aria-hidden="true"></i>
+        Nail Nook <span>&amp; More</span>
+      </a>
+      <button id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#location">Location</a></li>
+        <li class="nav-book"><a href="#booking">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-deco hero-deco-1"></div>
+    <div class="hero-deco hero-deco-2"></div>
+    <div class="hero-deco hero-deco-3"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fa-solid fa-star" aria-hidden="true"></i>&nbsp; Lake Havasu City's Premier Nail Salon</div>
+        <h1 class="hero-title">
+          <span class="line1">Nail Nook</span>
+          <span class="line2">&amp; More</span>
+        </h1>
+        <p class="hero-sub">Where every visit is a moment of luxury.<br>Expert nail care tailored just for you.</p>
+        <div class="hero-ctas">
+          <a href="#booking" class="btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i>&nbsp; Book Appointment</a>
+          <a href="#services" class="btn-secondary"><i class="fa-solid fa-spa" aria-hidden="true"></i>&nbsp; View Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="ornament fade-up"><i class="fa-solid fa-hand-sparkles" aria-hidden="true"></i></div>
+      <h2 class="section-title fade-up">Our Services</h2>
+      <p class="section-subtitle fade-up">Premium nail care crafted with precision and love</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-hand" aria-hidden="true"></i></div>
+          <div class="service-name">Classic Manicure</div>
+          <div class="service-price">From $25</div>
+          <div class="service-desc">Shape, buff, cuticle care, and your choice of polish. A timeless classic.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-gem" aria-hidden="true"></i></div>
+          <div class="service-name">Gel Manicure</div>
+          <div class="service-price">From $40</div>
+          <div class="service-desc">Long-lasting gel polish that stays chip-free for up to 3 weeks.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-wand-sparkles" aria-hidden="true"></i></div>
+          <div class="service-name">Acrylic Full Set</div>
+          <div class="service-price">From $55</div>
+          <div class="service-desc">Full acrylic extensions in any shape — coffin, almond, stiletto, square and more.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-paintbrush" aria-hidden="true"></i></div>
+          <div class="service-name">Nail Art</div>
+          <div class="service-price">From $15</div>
+          <div class="service-desc">Custom designs, florals, geometric patterns, ombre, and anything you can dream up.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-spa" aria-hidden="true"></i></div>
+          <div class="service-name">Classic Pedicure</div>
+          <div class="service-price">From $35</div>
+          <div class="service-desc">Soak, scrub, cuticle care, shape, and polish. Your feet will thank you.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></div>
+          <div class="service-name">Spa Pedicure</div>
+          <div class="service-price">From $55</div>
+          <div class="service-desc">Deluxe treatment with exfoliating mask, extended massage, and premium polish.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-feather" aria-hidden="true"></i></div>
+          <div class="service-name">Waxing</div>
+          <div class="service-price">From $12</div>
+          <div class="service-desc">Brows, lip, chin, arms, and more. Smooth, precise, and gentle on your skin.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-droplet" aria-hidden="true"></i></div>
+          <div class="service-name">Dip Powder</div>
+          <div class="service-price">From $45</div>
+          <div class="service-desc">No UV light needed. Soak-off dip powder for durable, vibrant, lightweight nails.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-frame fade-up">
+          <div class="about-frame-inner">
+            <span class="big-num">✦</span>
+            <div class="divider"></div>
+            <p><strong style="color: var(--color-text); font-family: 'Playfair Display', serif; font-size: 1.1rem;">Nail Nook &amp; More</strong></p>
+            <p style="margin-top: 0.8rem;">Lake Havasu City, Arizona</p>
+            <p style="margin-top: 0.5rem;">Walk-ins Welcome</p>
+            <p style="margin-top: 0.5rem;">Licensed &amp; Certified Technicians</p>
+            <div class="divider"></div>
+            <p style="font-style: italic; font-size: 0.88rem;">"Your nails, our passion."</p>
+          </div>
+        </div>
+        <div class="about-text fade-up">
+          <div class="ornament" style="justify-content: flex-start; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-hand-sparkles" aria-hidden="true" style="color: var(--color-rose);"></i>
+            <span style="color: var(--color-text-muted); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">About Us</span>
+          </div>
+          <h2>A Sanctuary <em style="color: var(--color-rose);">for Beauty</em></h2>
+          <p>At Nail Nook and More, we believe every person deserves to feel pampered. Our skilled technicians bring years of expertise and a genuine love for nail artistry to every single appointment.</p>
+          <p>Located in the heart of Lake Havasu City, we've built a warm, welcoming space where you can relax, unwind, and leave feeling more beautiful than when you walked in.</p>
+          <ul class="about-bullets">
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Licensed &amp; Certified Technicians</li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Premium, Cruelty-Free Products</li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Relaxing, Welcoming Environment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <div class="container">
+      <div class="ornament fade-up"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></div>
+      <h2 class="section-title fade-up">Book Your Appointment</h2>
+      <p class="section-subtitle fade-up">Fill in your details and we'll confirm your slot</p>
+
+      <!-- Booking Form -->
+      <div id="booking-form-wrapper">
+        <form id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="booking-name">Full Name</label>
+              <input type="text" id="booking-name" placeholder="Jane Smith" required>
+              <span class="field-error" id="err-name">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <label for="booking-phone">Phone Number</label>
+              <input type="tel" id="booking-phone" placeholder="9285551234" required>
+              <span class="field-error" id="err-phone">Please enter a valid 10-digit phone number.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="booking-email">Email Address</label>
+            <input type="email" id="booking-email" placeholder="jane@example.com" required>
+            <span class="field-error" id="err-email">Please enter a valid email address.</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="booking-service">Service Type</label>
+              <select id="booking-service" required>
+                <option value="">Select a service...</option>
+                <option value="Classic Manicure">Classic Manicure — From $25</option>
+                <option value="Gel Manicure">Gel Manicure — From $40</option>
+                <option value="Acrylic Full Set">Acrylic Full Set — From $55</option>
+                <option value="Nail Art">Nail Art — From $15</option>
+                <option value="Classic Pedicure">Classic Pedicure — From $35</option>
+                <option value="Spa Pedicure">Spa Pedicure — From $55</option>
+                <option value="Waxing">Waxing — From $12</option>
+                <option value="Dip Powder">Dip Powder — From $45</option>
+              </select>
+              <span class="field-error" id="err-service">Please select a service.</span>
+            </div>
+            <div class="form-group">
+              <label for="booking-date">Preferred Date</label>
+              <input type="date" id="booking-date" required>
+              <span class="field-error" id="err-date">Please select a valid future date.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="booking-time">Preferred Time</label>
+            <select id="booking-time" required>
+              <option value="">Select a time...</option>
+              <option value="Morning (9:00 AM – 12:00 PM)">Morning (9:00 AM – 12:00 PM)</option>
+              <option value="Early Afternoon (12:00 PM – 2:00 PM)">Early Afternoon (12:00 PM – 2:00 PM)</option>
+              <option value="Afternoon (2:00 PM – 4:00 PM)">Afternoon (2:00 PM – 4:00 PM)</option>
+              <option value="Evening (4:00 PM – 7:00 PM)">Evening (4:00 PM – 7:00 PM)</option>
+            </select>
+            <span class="field-error" id="err-time">Please select a time slot.</span>
+          </div>
+          <div class="form-group">
+            <label for="booking-notes">Special Requests <span style="font-weight:300; text-transform:none;">(optional)</span></label>
+            <textarea id="booking-notes" rows="3" placeholder="Any allergies, preferred nail shape, design ideas, or other notes..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">
+              <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>&nbsp; Book My Appointment
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Confirmation Screen -->
+      <div id="booking-confirmation" class="hidden">
+        <div class="confirm-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
+        <h2 class="confirm-title">You're all booked!</h2>
+        <p class="confirm-sub">We can't wait to see you. Here's a summary of your appointment:</p>
+        <div class="confirm-summary" id="confirm-summary-body"></div>
+        <div class="confirm-actions">
+          <a id="cal-link" href="#" target="_blank" class="btn-secondary">
+            <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i>&nbsp; Add to Calendar
+          </a>
+          <button class="btn-ghost" id="view-appts-btn">
+            <i class="fa-solid fa-list" aria-hidden="true"></i>&nbsp; My Appointments
+          </button>
+          <button class="btn-primary" id="book-another-btn">Book Another</button>
+        </div>
+      </div>
+
+      <!-- My Appointments -->
+      <div id="my-appointments" class="hidden">
+        <h3><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> My Appointments</h3>
+        <div id="appts-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="container">
+      <div class="ornament fade-up"><i class="fa-solid fa-map-pin" aria-hidden="true"></i></div>
+      <h2 class="section-title fade-up">Find Us</h2>
+      <p class="section-subtitle fade-up">Come visit us in beautiful Lake Havasu City</p>
+      <div class="location-grid">
+        <div class="location-info fade-up">
+          <h3>Visit Our Salon</h3>
+          <div class="info-item">
+            <i class="fa-solid fa-map-pin" aria-hidden="true"></i>
+            <div class="info-text">
+              <strong>Address</strong>
+              <!-- TODO: Replace with exact street address -->
+              Lake Havasu City, AZ 86403
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <div class="info-text">
+              <strong>Phone</strong>
+              <!-- TODO: Replace with actual phone number -->
+              <a href="tel:9285550100" style="color: inherit; text-decoration: none;">(928) 555-0100</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <div class="info-text">
+              <strong>Email</strong>
+              <!-- TODO: Replace with actual email -->
+              <a href="mailto:info@nailnookandmore.com" style="color: inherit; text-decoration: none;">info@nailnookandmore.com</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <div class="info-text">
+              <strong>Hours</strong>
+              <table class="hours-table">
+                <tr><td>Mon – Fri</td><td>9:00 AM – 7:00 PM</td></tr>
+                <tr><td>Saturday</td><td>9:00 AM – 6:00 PM</td></tr>
+                <tr><td>Sunday</td><td>10:00 AM – 5:00 PM</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="map-container fade-up">
+          <!-- TODO: Replace src with exact address Google Maps embed URL once you have the street address.
+               Get it from: maps.google.com → search your address → Share → Embed a map → copy iframe src -->
+          <iframe
+            src="https://maps.google.com/maps?q=Nail+Salon+Lake+Havasu+City+AZ&output=embed&z=14"
+            title="Nail Nook and More location map"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-logo" href="#hero" style="margin-bottom:1rem; display:flex;">
+            <i class="fa-solid fa-hand-sparkles" aria-hidden="true" style="color: var(--color-rose-light);"></i>
+            <span style="color: rgba(255,248,249,0.9);">Nail Nook <span style="color: var(--color-rose-light);">&amp; More</span></span>
+          </a>
+          <p>Your trusted nail salon in Lake Havasu City, AZ. Where beauty meets expertise and every client leaves glowing.</p>
+          <div class="social-links">
+            <!-- TODO: Replace # with actual social media profile URLs -->
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#booking">Book Now</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#booking">Manicures</a></li>
+            <li><a href="#booking">Pedicures</a></li>
+            <li><a href="#booking">Gel &amp; Acrylic</a></li>
+            <li><a href="#booking">Nail Art</a></li>
+            <li><a href="#booking">Waxing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="footer-year"></span> Nail Nook and More. All rights reserved. &nbsp;|&nbsp; Lake Havasu City, AZ</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT WIDGET -->
+  <button id="chatbot-toggle" aria-label="Open chat assistant">
+    <i class="fa-solid fa-comments" aria-hidden="true"></i>
+  </button>
+
+  <div id="chatbot-panel" role="dialog" aria-label="Nail Nook Assistant" aria-modal="true">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar"><i class="fa-solid fa-hand-sparkles" aria-hidden="true"></i></div>
+        <div>
+          <div class="chat-header-title">Nook Assistant</div>
+          <div class="chat-header-sub">We reply instantly ✦</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chat-close-btn" aria-label="Close chat">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div id="chat-messages" role="log" aria-live="polite"></div>
+    <div id="chat-quick-replies"></div>
+    <div id="chat-input-area" class="hidden">
+      <input type="text" id="chat-input" placeholder="Type your answer..." aria-label="Chat input">
+      <button id="chat-send" aria-label="Send"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+    </div>
+  </div>
+
+  <script>
+    /* === NAVIGATION === */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    /* === SCROLL ANIMATIONS === */
+    function setupScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll('.service-card');
+            cards.forEach((card, i) => {
+              card.style.transitionDelay = (i * 0.08) + 's';
+              card.classList.add('visible');
+            });
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      const grid = document.querySelector('.services-grid');
+      if (grid) cardObserver.observe(grid);
+    }
+
+    /* === BOOKING STORE === */
+    const BookingStore = {
+      KEY: 'nailnook_bookings',
+      getAll() { return JSON.parse(localStorage.getItem(this.KEY) || '[]'); },
+      save(booking) {
+        const all = this.getAll();
+        all.push(booking);
+        localStorage.setItem(this.KEY, JSON.stringify(all));
+      },
+      remove(id) {
+        const all = this.getAll().filter(b => b.id !== id);
+        localStorage.setItem(this.KEY, JSON.stringify(all));
+      }
+    };
+
+    /* === BOOKING FORM === */
+    function setMinDate() {
+      const dateInput = document.getElementById('booking-date');
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+
+    function showError(id, show) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('show', show);
+    }
+
+    function markInvalid(inputId, isInvalid) {
+      const el = document.getElementById(inputId);
+      if (el) el.classList.toggle('invalid', isInvalid);
+    }
+
+    function validateForm() {
+      const name = document.getElementById('booking-name').value.trim();
+      const phone = document.getElementById('booking-phone').value.replace(/\D/g, '');
+      const email = document.getElementById('booking-email').value.trim();
+      const service = document.getElementById('booking-service').value;
+      const date = document.getElementById('booking-date').value;
+      const time = document.getElementById('booking-time').value;
+      const today = new Date().toISOString().split('T')[0];
+
+      let valid = true;
+
+      const checks = [
+        ['booking-name', 'err-name', name.length > 0],
+        ['booking-phone', 'err-phone', /^\d{10}$/.test(phone)],
+        ['booking-email', 'err-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)],
+        ['booking-service', 'err-service', service !== ''],
+        ['booking-date', 'err-date', date !== '' && date >= today],
+        ['booking-time', 'err-time', time !== ''],
+      ];
+
+      checks.forEach(([inputId, errId, isValid]) => {
+        showError(errId, !isValid);
+        markInvalid(inputId, !isValid);
+        if (!isValid) valid = false;
+      });
+
+      return valid;
+    }
+
+    function buildCalendarLink(booking) {
+      const dateStr = booking.date.replace(/-/g, '');
+      const start = dateStr + 'T090000';
+      const end = dateStr + 'T100000';
+      const text = encodeURIComponent('Nail Nook & More Appointment');
+      const details = encodeURIComponent('Service: ' + booking.service + '\nName: ' + booking.name);
+      const location = encodeURIComponent('Nail Nook and More, Lake Havasu City, AZ');
+      return `https://calendar.google.com/calendar/r/eventedit?text=${text}&dates=${start}/${end}&details=${details}&location=${location}`;
+    }
+
+    function showConfirmation(booking) {
+      document.getElementById('booking-form-wrapper').classList.add('hidden');
+
+      const summaryEl = document.getElementById('confirm-summary-body');
+      const rows = [
+        ['Service', booking.service],
+        ['Date', new Date(booking.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })],
+        ['Time', booking.timeSlot],
+        ['Name', booking.name],
+        ['Phone', booking.phone],
+        ['Email', booking.email],
+      ];
+      if (booking.specialRequests) rows.push(['Notes', booking.specialRequests]);
+
+      summaryEl.innerHTML = rows.map(([label, value]) =>
+        `<div class="confirm-summary-row"><span class="label">${label}</span><span class="value">${value}</span></div>`
+      ).join('');
+
+      document.getElementById('cal-link').href = buildCalendarLink(booking);
+      document.getElementById('booking-confirmation').classList.remove('hidden');
+      document.getElementById('booking-confirmation').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetBookingForm() {
+      document.getElementById('booking-form').reset();
+      document.getElementById('booking-confirmation').classList.add('hidden');
+      document.getElementById('booking-form-wrapper').classList.remove('hidden');
+      document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+      document.querySelectorAll('.invalid').forEach(e => e.classList.remove('invalid'));
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function setupBookingForm() {
+      setMinDate();
+
+      document.getElementById('booking-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
+
+        const phone = document.getElementById('booking-phone').value.replace(/\D/g, '');
+        const booking = {
+          id: 'nnb_' + Date.now(),
+          name: document.getElementById('booking-name').value.trim(),
+          phone,
+          email: document.getElementById('booking-email').value.trim(),
+          service: document.getElementById('booking-service').value,
+          date: document.getElementById('booking-date').value,
+          timeSlot: document.getElementById('booking-time').value,
+          specialRequests: document.getElementById('booking-notes').value.trim(),
+          bookedAt: new Date().toISOString(),
+        };
+
+        BookingStore.save(booking);
+        showConfirmation(booking);
+      });
+
+      document.getElementById('book-another-btn').addEventListener('click', resetBookingForm);
+
+      document.getElementById('view-appts-btn').addEventListener('click', () => {
+        document.getElementById('booking-confirmation').classList.add('hidden');
+        showMyAppointments();
+      });
+
+      // Clear invalid state on input
+      ['booking-name','booking-phone','booking-email','booking-service','booking-date','booking-time'].forEach(id => {
+        document.getElementById(id).addEventListener('input', function() {
+          this.classList.remove('invalid');
+        });
+      });
+    }
+
+    /* === MY APPOINTMENTS === */
+    function renderApptCard(booking) {
+      const card = document.createElement('div');
+      card.className = 'appt-card';
+      card.dataset.id = booking.id;
+      const dateStr = new Date(booking.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+      card.innerHTML = `
+        <div class="appt-info">
+          <div class="appt-service">${booking.service}</div>
+          <div class="appt-meta">${dateStr} &nbsp;·&nbsp; ${booking.timeSlot} &nbsp;·&nbsp; ${booking.name}</div>
+        </div>
+        <button class="appt-cancel" data-id="${booking.id}">Cancel</button>
+      `;
+      card.querySelector('.appt-cancel').addEventListener('click', () => {
+        if (confirm('Cancel this appointment?')) {
+          BookingStore.remove(booking.id);
+          card.classList.add('removing');
+          setTimeout(() => card.remove(), 300);
+          const list = document.getElementById('appts-list');
+          if (!list.querySelector('.appt-card:not(.removing)')) {
+            list.innerHTML = '<p class="appt-empty">No upcoming appointments. Book one above!</p>';
+          }
+        }
+      });
+      return card;
+    }
+
+    function showMyAppointments() {
+      const myAppts = document.getElementById('my-appointments');
+      myAppts.classList.remove('hidden');
+      const list = document.getElementById('appts-list');
+      list.innerHTML = '';
+
+      const bookings = BookingStore.getAll()
+        .sort((a, b) => a.date.localeCompare(b.date));
+
+      if (bookings.length === 0) {
+        list.innerHTML = '<p class="appt-empty">No appointments yet. Book one above!</p>';
+      } else {
+        bookings.forEach(b => list.appendChild(renderApptCard(b)));
+      }
+
+      myAppts.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* === CHATBOT === */
+    const ChatBot = {
+      state: 'INIT',
+      opened: false,
+      session: { service: '', date: '', timeSlot: '', name: '', phone: '' },
+
+      open() {
+        document.getElementById('chatbot-panel').classList.add('open');
+        if (!this.opened) {
+          this.opened = true;
+          setTimeout(() => this.advance('INIT'), 300);
+        }
+      },
+
+      close() {
+        document.getElementById('chatbot-panel').classList.remove('open');
+      },
+
+      addMessage(text, sender) {
+        const msgs = document.getElementById('chat-messages');
+        const div = document.createElement('div');
+        div.className = 'chat-msg ' + sender;
+        div.innerHTML = text;
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+        return div;
+      },
+
+      showTyping() {
+        const msgs = document.getElementById('chat-messages');
+        const indicator = document.createElement('div');
+        indicator.className = 'typing-indicator';
+        indicator.id = 'typing-dot';
+        indicator.innerHTML = '<span></span><span></span><span></span>';
+        msgs.appendChild(indicator);
+        msgs.scrollTop = msgs.scrollHeight;
+      },
+
+      hideTyping() {
+        const el = document.getElementById('typing-dot');
+        if (el) el.remove();
+      },
+
+      botSay(html, delay = 800) {
+        return new Promise(resolve => {
+          this.showTyping();
+          setTimeout(() => {
+            this.hideTyping();
+            this.addMessage(html, 'bot');
+            resolve();
+          }, delay);
+        });
+      },
+
+      showQuickReplies(options) {
+        const area = document.getElementById('chat-quick-replies');
+        area.innerHTML = '';
+        options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'quick-reply-btn';
+          btn.textContent = opt.label;
+          btn.addEventListener('click', () => {
+            this.addMessage(opt.label, 'user');
+            area.innerHTML = '';
+            this.handleQuickReply(opt.value || opt.label);
+          });
+          area.appendChild(btn);
+        });
+      },
+
+      showInput(placeholder = 'Type here...') {
+        const area = document.getElementById('chat-input-area');
+        const input = document.getElementById('chat-input');
+        area.classList.remove('hidden');
+        input.placeholder = placeholder;
+        input.value = '';
+        input.focus();
+      },
+
+      hideInput() {
+        document.getElementById('chat-input-area').classList.add('hidden');
+      },
+
+      getISODate(relative) {
+        const today = new Date();
+        if (relative === 'today') {
+          return today.toISOString().split('T')[0];
+        } else if (relative === 'tomorrow') {
+          const t = new Date(today.getTime() + 86400000);
+          return t.toISOString().split('T')[0];
+        }
+        return relative; // already ISO
+      },
+
+      async advance(nextState) {
+        this.state = nextState;
+        const s = this.session;
+
+        if (nextState === 'INIT') {
+          await this.botSay("Hi there! 💅 Welcome to <strong>Nail Nook &amp; More</strong>. I'm here to help you find the perfect service and book your appointment. What are you looking to get done today?");
+          this.showQuickReplies([
+            { label: 'Manicure', value: 'Classic Manicure' },
+            { label: 'Gel Manicure', value: 'Gel Manicure' },
+            { label: 'Acrylic Nails', value: 'Acrylic Full Set' },
+            { label: 'Pedicure', value: 'Classic Pedicure' },
+            { label: 'Nail Art', value: 'Nail Art' },
+            { label: 'Something else', value: 'other' },
+          ]);
+
+        } else if (nextState === 'SERVICE_SELECTED') {
+          await this.botSay(`Great choice! <strong>${s.service}</strong> it is ✨<br>When would you like to come in?`);
+          this.showQuickReplies([
+            { label: 'Today', value: 'today' },
+            { label: 'Tomorrow', value: 'tomorrow' },
+            { label: 'Pick a date', value: 'pick_date' },
+          ]);
+
+        } else if (nextState === 'PICK_DATE') {
+          await this.botSay('What date works for you? (e.g. 2025-06-15)');
+          this.showInput('YYYY-MM-DD');
+
+        } else if (nextState === 'DATE_COLLECTED') {
+          const displayDate = new Date(s.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+          await this.botSay(`Perfect — <strong>${displayDate}</strong>. What time works best for you?`);
+          this.showQuickReplies([
+            { label: 'Morning (9am–12pm)', value: 'Morning (9:00 AM – 12:00 PM)' },
+            { label: 'Afternoon (12–4pm)', value: 'Early Afternoon (12:00 PM – 2:00 PM)' },
+            { label: 'Evening (4–7pm)', value: 'Evening (4:00 PM – 7:00 PM)' },
+          ]);
+
+        } else if (nextState === 'TIME_COLLECTED') {
+          await this.botSay("Almost there! What's your name?");
+          this.showInput('Your first name');
+
+        } else if (nextState === 'NAME_COLLECTED') {
+          await this.botSay(`Nice to meet you, <strong>${s.name}</strong>! 🌸 What's the best phone number to reach you?`);
+          this.showInput('10-digit phone number');
+
+        } else if (nextState === 'PHONE_COLLECTED') {
+          await this.botSay(
+            `Here's what I have for your appointment:<br><br>` +
+            `<strong>Service:</strong> ${s.service}<br>` +
+            `<strong>Date:</strong> ${new Date(s.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}<br>` +
+            `<strong>Time:</strong> ${s.timeSlot}<br>` +
+            `<strong>Name:</strong> ${s.name}<br>` +
+            `<strong>Phone:</strong> ${s.phone}<br><br>` +
+            `Shall I pre-fill the booking form for you?`
+          );
+          this.showQuickReplies([
+            { label: 'Yes, fill the form!', value: 'confirm' },
+            { label: 'Start over', value: 'reset' },
+          ]);
+
+        } else if (nextState === 'CONFIRM') {
+          await this.botSay(`Perfect! I've filled in your details below. Just review and click <strong>Book My Appointment</strong> to confirm. See you soon! 💖`);
+          this.prefillForm();
+          setTimeout(() => this.close(), 1000);
+
+        } else if (nextState === 'RESET') {
+          await this.botSay("No problem! Let's start fresh. What service are you looking for?");
+          this.session = { service: '', date: '', timeSlot: '', name: '', phone: '' };
+          this.showQuickReplies([
+            { label: 'Manicure', value: 'Classic Manicure' },
+            { label: 'Gel Manicure', value: 'Gel Manicure' },
+            { label: 'Acrylic Nails', value: 'Acrylic Full Set' },
+            { label: 'Pedicure', value: 'Classic Pedicure' },
+            { label: 'Nail Art', value: 'Nail Art' },
+            { label: 'Something else', value: 'other' },
+          ]);
+          this.state = 'INIT';
+        }
+      },
+
+      async handleQuickReply(value) {
+        this.hideInput();
+        if (this.state === 'INIT') {
+          if (value === 'other') {
+            this.session.service = 'Waxing';
+            await this.botSay("No problem! We also offer Dip Powder, Waxing, and Spa Pedicures. I'll set up the form so you can choose exactly. Let's continue — when would you like to come in?");
+            this.showQuickReplies([
+              { label: 'Today', value: 'today' },
+              { label: 'Tomorrow', value: 'tomorrow' },
+              { label: 'Pick a date', value: 'pick_date' },
+            ]);
+            this.state = 'SERVICE_SELECTED';
+            return;
+          }
+          this.session.service = value;
+          this.advance('SERVICE_SELECTED');
+        } else if (this.state === 'SERVICE_SELECTED') {
+          if (value === 'pick_date') {
+            this.advance('PICK_DATE');
+          } else {
+            this.session.date = this.getISODate(value);
+            this.advance('DATE_COLLECTED');
+          }
+        } else if (this.state === 'DATE_COLLECTED') {
+          this.session.timeSlot = value;
+          this.advance('TIME_COLLECTED');
+        } else if (this.state === 'PHONE_COLLECTED') {
+          if (value === 'confirm') this.advance('CONFIRM');
+          else if (value === 'reset') this.advance('RESET');
+        }
+      },
+
+      handleTextInput(text) {
+        const val = text.trim();
+        if (!val) return;
+        document.getElementById('chat-input').value = '';
+
+        if (this.state === 'PICK_DATE') {
+          const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+          const today = new Date().toISOString().split('T')[0];
+          if (dateRegex.test(val) && val >= today) {
+            this.addMessage(val, 'user');
+            this.hideInput();
+            this.session.date = val;
+            this.state = 'DATE_COLLECTED_WAIT';
+            this.advance('DATE_COLLECTED');
+          } else {
+            this.botSay("Please enter a valid future date in YYYY-MM-DD format (e.g., 2025-06-20).", 400);
+          }
+          return;
+        }
+
+        if (this.state === 'TIME_COLLECTED') {
+          if (val.length < 2) {
+            this.botSay("I didn't quite catch that. What's your name?", 400);
+            return;
+          }
+          this.addMessage(val, 'user');
+          this.hideInput();
+          this.session.name = val.charAt(0).toUpperCase() + val.slice(1);
+          this.advance('NAME_COLLECTED');
+          return;
+        }
+
+        if (this.state === 'NAME_COLLECTED') {
+          const phone = val.replace(/\D/g, '');
+          if (!/^\d{10}$/.test(phone)) {
+            this.botSay("Please enter a 10-digit phone number (digits only, e.g. 9285551234).", 400);
+            return;
+          }
+          this.addMessage(val, 'user');
+          this.hideInput();
+          this.session.phone = phone;
+          this.advance('PHONE_COLLECTED');
+          return;
+        }
+      },
+
+      prefillForm() {
+        document.getElementById('booking-name').value = this.session.name;
+        document.getElementById('booking-phone').value = this.session.phone;
+        document.getElementById('booking-service').value = this.session.service;
+        document.getElementById('booking-date').value = this.session.date;
+        document.getElementById('booking-time').value = this.session.timeSlot;
+        // Make sure confirmation is hidden and form is shown
+        document.getElementById('booking-confirmation').classList.add('hidden');
+        document.getElementById('booking-form-wrapper').classList.remove('hidden');
+        document.getElementById('my-appointments').classList.add('hidden');
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+      },
+
+      init() {
+        document.getElementById('chatbot-toggle').addEventListener('click', () => this.open());
+        document.getElementById('chat-close-btn').addEventListener('click', () => this.close());
+
+        document.getElementById('chat-send').addEventListener('click', () => {
+          this.handleTextInput(document.getElementById('chat-input').value);
+        });
+        document.getElementById('chat-input').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') this.handleTextInput(e.target.value);
+        });
+      }
+    };
+
+    /* === FOOTER YEAR === */
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    /* === INIT === */
+    document.addEventListener('DOMContentLoaded', () => {
+      setupScrollAnimations();
+      setupBookingForm();
+      ChatBot.init();
+    });
+  </script>
+
+</body>
+</html>
