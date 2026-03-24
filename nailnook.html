@@ -1267,6 +1267,124 @@
       cursor: pointer; font-family: 'Lato', sans-serif; white-space: nowrap; flex-shrink: 0;
     }
 
+    /* === TECH CARD CLICK CUE === */
+    .tech-photo { cursor: pointer; }
+    .tech-photo:hover .tech-initials { opacity: 0.65; transition: opacity var(--transition); }
+    .tech-photo::after {
+      content: 'View Profile';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(45,26,34,0.55);
+      color: #fff; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-align: center; padding: 0.4rem;
+      opacity: 0; transition: opacity var(--transition);
+      pointer-events: none;
+    }
+    .tech-photo:hover::after { opacity: 1; }
+
+    /* === PROFILE MODAL === */
+    .profile-overlay {
+      position: fixed; inset: 0; z-index: 3000;
+      background: rgba(45,26,34,0.72); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .profile-overlay.open { opacity: 1; pointer-events: all; }
+    .profile-modal {
+      background: var(--color-bg); border-radius: 16px;
+      max-width: 500px; width: 92%; max-height: 88vh; overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(45,26,34,0.4);
+      position: relative;
+      transform: scale(0.93) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .profile-overlay.open .profile-modal { transform: scale(1) translateY(0); }
+    .profile-modal::-webkit-scrollbar { width: 4px; }
+    .profile-modal::-webkit-scrollbar-thumb { background: var(--color-rose-light); border-radius: 2px; }
+
+    .profile-hero {
+      height: 220px; position: relative; overflow: hidden;
+      border-radius: 16px 16px 0 0; flex-shrink: 0;
+    }
+    .profile-hero-bg {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .profile-hero img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: top; z-index: 1;
+    }
+    .profile-hero-initials {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: 3px solid rgba(255,255,255,0.6);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 2.5rem;
+      color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: relative; z-index: 0;
+    }
+    .profile-close {
+      position: absolute; top: 0.85rem; right: 0.85rem; z-index: 10;
+      background: rgba(255,255,255,0.88); border: none; border-radius: 50%;
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--color-text); font-size: 1rem;
+      transition: all var(--transition);
+    }
+    .profile-close:hover { background: var(--color-rose); color: #fff; }
+
+    .profile-info { padding: 1.4rem 1.5rem 0; }
+    .profile-name {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem;
+      color: var(--color-text); margin-bottom: 0.2rem;
+    }
+    .profile-title {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--color-gold-dark); margin-bottom: 0.9rem;
+    }
+    .profile-phone-row {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;
+    }
+    .profile-phone-link {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 1rem; font-weight: 700; color: var(--color-text);
+      text-decoration: none; transition: color var(--transition);
+    }
+    .profile-phone-link i { color: var(--color-rose); }
+    .profile-phone-link:hover { color: var(--color-rose); }
+
+    .profile-work-section { padding: 0 1.5rem 0.5rem; }
+    .profile-work-title {
+      font-family: 'Playfair Display', serif; font-size: 1rem;
+      color: var(--color-text); margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .profile-work-title i { color: var(--color-rose); font-size: 0.85rem; }
+    .profile-work-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .profile-work-grid img {
+      width: 100%; aspect-ratio: 1; object-fit: cover;
+      border-radius: 8px; transition: transform var(--transition);
+      cursor: pointer;
+    }
+    .profile-work-grid img:hover { transform: scale(1.04); }
+    .profile-no-photos {
+      text-align: center; padding: 1.5rem 0; color: var(--color-text-muted);
+      font-size: 0.85rem; font-style: italic;
+    }
+    .profile-no-photos i { display: block; font-size: 1.8rem; margin-bottom: 0.4rem; color: var(--color-rose-light); }
+
+    .profile-footer { padding: 1rem 1.5rem 1.5rem; }
+    .profile-book-btn {
+      width: 100%; padding: 0.85rem; background: var(--color-rose); color: #fff;
+      border: none; border-radius: 10px; font-family: 'Lato', sans-serif;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
+      transition: all var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .profile-book-btn:hover { background: var(--color-gold); transform: translateY(-1px); }
+
     /* === RESPONSIVE (new) === */
     @media (max-width: 768px) {
       #call-now-float { left: 1rem; bottom: 1rem; font-size: 0.82rem; padding: 0.72rem 1.1rem; }
@@ -1427,10 +1545,11 @@
 
         <!-- Stephanie (Owner) -->
         <div class="tech-card">
-          <div class="tech-photo tp-stephanie">
+          <div class="tech-photo tp-stephanie" onclick="openTechModal('stephanie')">
+            <img src="images/team/stephanie/photo.jpg" alt="Stephanie" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-stephanie">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('stephanie','Stephanie')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('stephanie','Stephanie')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Stephanie <span style="font-size:0.72rem;color:var(--color-rose);font-family:'Lato',sans-serif;font-weight:700;">Owner</span></div>
@@ -1445,10 +1564,11 @@
 
         <!-- Raquel -->
         <div class="tech-card">
-          <div class="tech-photo tp-raquel">
+          <div class="tech-photo tp-raquel" onclick="openTechModal('raquel')">
+            <img src="images/team/raquel/photo.jpg" alt="Raquel" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">R</div>
             <span class="tech-avail-badge" id="avail-badge-raquel">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('raquel','Raquel')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('raquel','Raquel')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Raquel</div>
@@ -1463,10 +1583,11 @@
 
         <!-- Kendall -->
         <div class="tech-card">
-          <div class="tech-photo tp-kendall">
+          <div class="tech-photo tp-kendall" onclick="openTechModal('kendall')">
+            <img src="images/team/kendall/photo.jpg" alt="Kendall" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">K</div>
             <span class="tech-avail-badge" id="avail-badge-kendall">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('kendall','Kendall')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('kendall','Kendall')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Kendall</div>
@@ -1481,10 +1602,11 @@
 
         <!-- Lara -->
         <div class="tech-card">
-          <div class="tech-photo tp-lara">
+          <div class="tech-photo tp-lara" onclick="openTechModal('lara')">
+            <img src="images/team/lara/photo.jpg" alt="Lara" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">L</div>
             <span class="tech-avail-badge" id="avail-badge-lara">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('lara','Lara')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('lara','Lara')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Lara</div>
@@ -1499,10 +1621,11 @@
 
         <!-- Ashly -->
         <div class="tech-card">
-          <div class="tech-photo tp-ashly">
+          <div class="tech-photo tp-ashly" onclick="openTechModal('ashly')">
+            <img src="images/team/ashly/photo.jpg" alt="Ashly" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">A</div>
             <span class="tech-avail-badge" id="avail-badge-ashly">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('ashly','Ashly')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('ashly','Ashly')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Ashly</div>
@@ -1517,10 +1640,11 @@
 
         <!-- Jessica -->
         <div class="tech-card">
-          <div class="tech-photo tp-jessica">
+          <div class="tech-photo tp-jessica" onclick="openTechModal('jessica')">
+            <img src="images/team/jessica/photo.jpg" alt="Jessica" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">J</div>
             <span class="tech-avail-badge" id="avail-badge-jessica">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('jessica','Jessica')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('jessica','Jessica')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Jessica</div>
@@ -1535,10 +1659,11 @@
 
         <!-- Katie -->
         <div class="tech-card">
-          <div class="tech-photo tp-katie">
+          <div class="tech-photo tp-katie" onclick="openTechModal('katie')">
+            <img src="images/team/katie/photo.jpg" alt="Katie" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">K</div>
             <span class="tech-avail-badge" id="avail-badge-katie">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('katie','Katie')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('katie','Katie')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Katie</div>
@@ -1553,10 +1678,11 @@
 
         <!-- Ricci -->
         <div class="tech-card">
-          <div class="tech-photo tp-ricci">
+          <div class="tech-photo tp-ricci" onclick="openTechModal('ricci')">
+            <img src="images/team/ricci/photo.jpg" alt="Ricci" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">R</div>
             <span class="tech-avail-badge" id="avail-badge-ricci">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('ricci','Ricci')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('ricci','Ricci')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Ricci</div>
@@ -1571,10 +1697,11 @@
 
         <!-- Selena -->
         <div class="tech-card">
-          <div class="tech-photo tp-selena">
+          <div class="tech-photo tp-selena" onclick="openTechModal('selena')">
+            <img src="images/team/selena/photo.jpg" alt="Selena" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-selena">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('selena','Selena')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('selena','Selena')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Selena</div>
@@ -1589,10 +1716,11 @@
 
         <!-- Shannon -->
         <div class="tech-card">
-          <div class="tech-photo tp-shannon">
+          <div class="tech-photo tp-shannon" onclick="openTechModal('shannon')">
+            <img src="images/team/shannon/photo.jpg" alt="Shannon" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-shannon">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('shannon','Shannon')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('shannon','Shannon')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Shannon</div>
@@ -1607,10 +1735,11 @@
 
         <!-- Shelby -->
         <div class="tech-card">
-          <div class="tech-photo tp-shelby">
+          <div class="tech-photo tp-shelby" onclick="openTechModal('shelby')">
+            <img src="images/team/shelby/photo.jpg" alt="Shelby" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-shelby">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('shelby','Shelby')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('shelby','Shelby')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Shelby</div>
@@ -1625,10 +1754,11 @@
 
         <!-- Rita -->
         <div class="tech-card">
-          <div class="tech-photo tp-rita">
+          <div class="tech-photo tp-rita" onclick="openTechModal('rita')">
+            <img src="images/team/rita/photo.jpg" alt="Rita" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">R</div>
             <span class="tech-avail-badge" id="avail-badge-rita">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('rita','Rita')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('rita','Rita')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Rita</div>
@@ -1643,10 +1773,11 @@
 
         <!-- Cathy -->
         <div class="tech-card">
-          <div class="tech-photo tp-cathy">
+          <div class="tech-photo tp-cathy" onclick="openTechModal('cathy')">
+            <img src="images/team/cathy/photo.jpg" alt="Cathy" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">C</div>
             <span class="tech-avail-badge" id="avail-badge-cathy">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('cathy','Cathy')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('cathy','Cathy')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Cathy</div>
@@ -1661,10 +1792,11 @@
 
         <!-- Amanda -->
         <div class="tech-card">
-          <div class="tech-photo tp-amanda">
+          <div class="tech-photo tp-amanda" onclick="openTechModal('amanda')">
+            <img src="images/team/amanda/photo.jpg" alt="Amanda" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">A</div>
             <span class="tech-avail-badge" id="avail-badge-amanda">Available</span>
-            <button class="tech-settings-btn" onclick="openAvailModal('amanda','Amanda')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
+            <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('amanda','Amanda')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
           </div>
           <div class="tech-body">
             <div class="tech-name">Amanda</div>
@@ -2143,6 +2275,40 @@
       </div>
     </div>
   </footer>
+
+  <!-- TECH PROFILE MODAL -->
+  <div class="profile-overlay" id="profile-overlay" role="dialog" aria-modal="true" aria-label="Technician Profile">
+    <div class="profile-modal" id="profile-modal">
+      <div class="profile-hero" id="profile-hero">
+        <button class="profile-close" onclick="closeTechModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="profile-hero-bg" id="profile-hero-bg">
+          <div class="profile-hero-initials" id="profile-hero-initials">?</div>
+        </div>
+        <img id="profile-hero-img" src="" alt="" onerror="this.style.display='none'" style="display:none;">
+      </div>
+      <div class="profile-info">
+        <div class="profile-name" id="profile-name"></div>
+        <div class="profile-title" id="profile-title"></div>
+        <div class="profile-phone-row">
+          <a class="profile-phone-link" id="profile-phone" href="#">
+            <i class="fa-solid fa-phone"></i> <span id="profile-phone-text"></span>
+          </a>
+        </div>
+      </div>
+      <div class="profile-work-section">
+        <div class="profile-work-title"><i class="fa-solid fa-images"></i> Their Work</div>
+        <div class="profile-work-grid" id="profile-work-grid"></div>
+        <div class="profile-no-photos hidden" id="profile-no-photos">
+          <i class="fa-solid fa-camera"></i> Photos coming soon
+        </div>
+      </div>
+      <div class="profile-footer">
+        <button class="profile-book-btn" id="profile-book-btn" onclick="closeTechModal()">
+          <i class="fa-solid fa-calendar-check"></i> <span id="profile-book-label">Book Now</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- CALL NOW FLOATING BUTTON -->
   <a id="call-now-float" href="tel:9284863524" aria-label="Call Nail Nook now">
@@ -2898,6 +3064,94 @@
         });
       }
     };
+
+    /* === TECH PROFILE MODAL === */
+    const TECH_PHONES = {
+      stephanie: { tel: '9284863524', display: '(928) 486-3524' },
+      raquel:    { tel: '9288461087', display: '(928) 846-1087' },
+      kendall:   { tel: '9287322267', display: '(928) 732-2267' },
+      lara:      { tel: '9284867756', display: '(928) 486-7756' },
+      ashly:     { tel: '9283020949', display: '(928) 302-0949' },
+      jessica:   { tel: '9284123735', display: '(928) 412-3735' },
+      katie:     { tel: '9284125323', display: '(928) 412-5323' },
+      ricci:     { tel: '9285421115', display: '(928) 542-1115' },
+      selena:    { tel: '9286628250', display: '(928) 662-8250' },
+      shannon:   { tel: '9284126965', display: '(928) 412-6965' },
+      shelby:    { tel: '9515326685', display: '(951) 532-6685' },
+      rita:      { tel: '4802419972', display: '(480) 241-9972' },
+      cathy:     { tel: '9287066177', display: '(928) 706-6177' },
+      amanda:    { tel: '9099961121', display: '(909) 996-1121' },
+    };
+
+    function openTechModal(id) {
+      const tech = TECHNICIANS.find(t => t.id === id);
+      if (!tech) return;
+      const phone = TECH_PHONES[id];
+
+      // Populate hero
+      const heroImg = document.getElementById('profile-hero-img');
+      const heroBg = document.getElementById('profile-hero-bg');
+      heroImg.src = 'images/team/' + id + '/photo.jpg';
+      heroImg.alt = tech.name;
+      heroImg.style.display = '';
+      heroImg.onerror = function() { this.style.display = 'none'; };
+      // Match gradient to card color
+      const cardPhoto = document.querySelector('.tp-' + id);
+      heroBg.style.background = cardPhoto ? getComputedStyle(cardPhoto).background : '';
+      document.getElementById('profile-hero-initials').textContent = tech.name.charAt(0);
+
+      // Populate info
+      document.getElementById('profile-name').textContent = tech.name + (id === 'stephanie' ? ' (Owner)' : '');
+      document.getElementById('profile-title').textContent = tech.title;
+      if (phone) {
+        document.getElementById('profile-phone').href = 'tel:' + phone.tel;
+        document.getElementById('profile-phone-text').textContent = phone.display;
+      }
+
+      // Book button
+      document.getElementById('profile-book-label').textContent = 'Book with ' + tech.name;
+      document.getElementById('profile-book-btn').onclick = function() {
+        closeTechModal();
+        bookWithTech(id, tech.name);
+      };
+
+      // Load work photos dynamically (try 1.jpg through 12.jpg)
+      const grid = document.getElementById('profile-work-grid');
+      const noPhotos = document.getElementById('profile-no-photos');
+      grid.innerHTML = '';
+      let loaded = 0;
+      for (let i = 1; i <= 12; i++) {
+        const img = document.createElement('img');
+        img.alt = tech.name + ' work ' + i;
+        img.onload = function() { loaded++; noPhotos.classList.add('hidden'); };
+        img.onerror = function() { this.remove(); if (loaded === 0 && i >= 12) noPhotos.classList.remove('hidden'); };
+        img.src = 'images/team/' + id + '/' + i + '.jpg';
+        grid.appendChild(img);
+      }
+      // Show "no photos" message after a brief delay if nothing loaded
+      setTimeout(() => {
+        if (grid.querySelectorAll('img').length === 0 || loaded === 0) {
+          noPhotos.classList.remove('hidden');
+        }
+      }, 600);
+
+      document.getElementById('profile-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeTechModal() {
+      document.getElementById('profile-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on overlay click
+    document.getElementById('profile-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeTechModal();
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeTechModal();
+    });
 
     /* === FOOTER YEAR === */
     document.getElementById('footer-year').textContent = new Date().getFullYear();
