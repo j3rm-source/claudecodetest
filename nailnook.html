@@ -1151,28 +1151,17 @@
     /* === GALLERY SECTION === */
     #gallery { background: var(--color-surface-alt); }
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 0.75rem;
+      columns: 4;
+      column-gap: 0.75rem;
     }
-    .gallery-tile { aspect-ratio: 1; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; transition: transform var(--transition); }
-    .gallery-tile:hover { transform: scale(1.04); z-index: 1; }
+    @media (max-width: 900px) { .gallery-grid { columns: 3; } }
+    @media (max-width: 600px) { .gallery-grid { columns: 2; } }
+    .gallery-tile { break-inside: avoid; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; margin-bottom: 0.75rem; }
+    .gallery-tile img { width: 100%; display: block; transition: transform var(--transition); }
+    .gallery-tile:hover img { transform: scale(1.05); }
     .gallery-tile:hover .gallery-overlay { opacity: 1; }
-    .gallery-tile-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
-    .g1  { background: linear-gradient(135deg,#fff0f3,#f0b8c8,#d4849a); }
-    .g2  { background: linear-gradient(135deg,#fce8ed,#e8a0b4,#c07090); }
-    .g3  { background: linear-gradient(135deg,#2d1a22,#8c5a68,#d4849a); }
-    .g4  { background: linear-gradient(135deg,#f0f0ff,#c8b8f0,#9878cc); }
-    .g5  { background: linear-gradient(135deg,#fff8e8,#f0d890,#c8a830); }
-    .g6  { background: linear-gradient(135deg,#e8f8e8,#a0d8a8,#4a9a60); }
-    .g7  { background: linear-gradient(135deg,#fff0f0,#f09090,#c01818); }
-    .g8  { background: linear-gradient(135deg,#e8f4f8,#90c4e0,#3080a8); }
-    .g9  { background: repeating-linear-gradient(45deg,#f8d4e0,#f8d4e0 10px,#d4849a 10px,#d4849a 20px); }
-    .g10 { background: linear-gradient(135deg,#fff0e8,#f8b880,#e87020); }
-    .g11 { background: linear-gradient(135deg,#2d2d38,#606070,#9090a0); }
-    .g12 { background: linear-gradient(135deg,#f0e8ff,#d0b8f8,#9060d8); }
     .gallery-overlay {
-      position: absolute; inset: 0; background: rgba(45,26,34,0.65);
+      position: absolute; inset: 0; background: rgba(45,26,34,0.55);
       display: flex; align-items: flex-end; padding: 0.7rem;
       opacity: 0; transition: opacity var(--transition);
     }
@@ -1561,7 +1550,7 @@
         <!-- Stephanie (Owner) -->
         <div class="tech-card">
           <div class="tech-photo tp-stephanie" onclick="openTechModal('stephanie')">
-            <img src="images/team/stephanie/photo.jpg" alt="Stephanie" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?nail,manicure,nailart&sig=1" alt="Nail art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-stephanie">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('stephanie','Stephanie')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1580,7 +1569,7 @@
         <!-- Raquel -->
         <div class="tech-card">
           <div class="tech-photo tp-raquel" onclick="openTechModal('raquel')">
-            <img src="images/team/raquel/photo.jpg" alt="Raquel" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?nail,manicure,nailart&sig=2" alt="Nail art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">R</div>
             <span class="tech-avail-badge" id="avail-badge-raquel">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('raquel','Raquel')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1599,7 +1588,7 @@
         <!-- Kendall -->
         <div class="tech-card">
           <div class="tech-photo tp-kendall" onclick="openTechModal('kendall')">
-            <img src="images/team/kendall/photo.jpg" alt="Kendall" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?spa,facial,skincare&sig=3" alt="Med spa treatment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">K</div>
             <span class="tech-avail-badge" id="avail-badge-kendall">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('kendall','Kendall')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1618,7 +1607,7 @@
         <!-- Lara -->
         <div class="tech-card">
           <div class="tech-photo tp-lara" onclick="openTechModal('lara')">
-            <img src="images/team/lara/photo.jpg" alt="Lara" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?massage,spa,wellness&sig=4" alt="Massage therapy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">L</div>
             <span class="tech-avail-badge" id="avail-badge-lara">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('lara','Lara')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1637,7 +1626,7 @@
         <!-- Ashly -->
         <div class="tech-card">
           <div class="tech-photo tp-ashly" onclick="openTechModal('ashly')">
-            <img src="images/team/ashly/photo.jpg" alt="Ashly" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?eyelash,eyelashes,beauty&sig=5" alt="Eyelash extensions" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">A</div>
             <span class="tech-avail-badge" id="avail-badge-ashly">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('ashly','Ashly')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1656,7 +1645,7 @@
         <!-- Jessica -->
         <div class="tech-card">
           <div class="tech-photo tp-jessica" onclick="openTechModal('jessica')">
-            <img src="images/team/jessica/photo.jpg" alt="Jessica" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?nail,manicure,nailart&sig=6" alt="Nail art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">J</div>
             <span class="tech-avail-badge" id="avail-badge-jessica">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('jessica','Jessica')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1675,7 +1664,7 @@
         <!-- Katie -->
         <div class="tech-card">
           <div class="tech-photo tp-katie" onclick="openTechModal('katie')">
-            <img src="images/team/katie/photo.jpg" alt="Katie" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?nail,manicure,nailart&sig=7" alt="Nail art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">K</div>
             <span class="tech-avail-badge" id="avail-badge-katie">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('katie','Katie')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1694,7 +1683,7 @@
         <!-- Ricci -->
         <div class="tech-card">
           <div class="tech-photo tp-ricci" onclick="openTechModal('ricci')">
-            <img src="images/team/ricci/photo.jpg" alt="Ricci" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?hair,hairstyle,salon&sig=8" alt="Hair styling" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">R</div>
             <span class="tech-avail-badge" id="avail-badge-ricci">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('ricci','Ricci')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1713,7 +1702,7 @@
         <!-- Selena -->
         <div class="tech-card">
           <div class="tech-photo tp-selena" onclick="openTechModal('selena')">
-            <img src="images/team/selena/photo.jpg" alt="Selena" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?nail,manicure,nailart&sig=9" alt="Nail art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-selena">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('selena','Selena')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1732,7 +1721,7 @@
         <!-- Shannon -->
         <div class="tech-card">
           <div class="tech-photo tp-shannon" onclick="openTechModal('shannon')">
-            <img src="images/team/shannon/photo.jpg" alt="Shannon" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?nail,manicure,nailart&sig=10" alt="Nail art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-shannon">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('shannon','Shannon')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1751,7 +1740,7 @@
         <!-- Shelby -->
         <div class="tech-card">
           <div class="tech-photo tp-shelby" onclick="openTechModal('shelby')">
-            <img src="images/team/shelby/photo.jpg" alt="Shelby" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?beauty,skincare,smooth&sig=11" alt="Waxing beauty" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">S</div>
             <span class="tech-avail-badge" id="avail-badge-shelby">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('shelby','Shelby')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1770,7 +1759,7 @@
         <!-- Rita -->
         <div class="tech-card">
           <div class="tech-photo tp-rita" onclick="openTechModal('rita')">
-            <img src="images/team/rita/photo.jpg" alt="Rita" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?nail,manicure,nailart&sig=12" alt="Nail art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">R</div>
             <span class="tech-avail-badge" id="avail-badge-rita">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('rita','Rita')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1789,7 +1778,7 @@
         <!-- Cathy -->
         <div class="tech-card">
           <div class="tech-photo tp-cathy" onclick="openTechModal('cathy')">
-            <img src="images/team/cathy/photo.jpg" alt="Cathy" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?hair,hairstyle,salon&sig=13" alt="Hair styling" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">C</div>
             <span class="tech-avail-badge" id="avail-badge-cathy">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('cathy','Cathy')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1808,7 +1797,7 @@
         <!-- Amanda -->
         <div class="tech-card">
           <div class="tech-photo tp-amanda" onclick="openTechModal('amanda')">
-            <img src="images/team/amanda/photo.jpg" alt="Amanda" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
+            <img src="https://source.unsplash.com/400x400/?hair,hairstyle,salon&sig=14" alt="Hair styling" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1;">
             <div class="tech-initials">A</div>
             <span class="tech-avail-badge" id="avail-badge-amanda">Available</span>
             <button class="tech-settings-btn" onclick="event.stopPropagation();openAvailModal('amanda','Amanda')" title="Update Availability"><i class="fa-solid fa-sliders"></i></button>
@@ -1835,18 +1824,30 @@
       <h2 class="section-title fade-up">Our Work</h2>
       <p class="section-subtitle fade-up">A glimpse of the artistry we bring to every appointment</p>
       <div class="gallery-grid">
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g1">💅</div><div class="gallery-overlay"><span class="gallery-label">Classic French</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g2">✨</div><div class="gallery-overlay"><span class="gallery-label">Ombre Rose</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g3">🖤</div><div class="gallery-overlay"><span class="gallery-label">Black Chrome</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g4">💜</div><div class="gallery-overlay"><span class="gallery-label">Lavender Dream</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g5">✨</div><div class="gallery-overlay"><span class="gallery-label">Gold Foil Art</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g6">🌿</div><div class="gallery-overlay"><span class="gallery-label">Mint &amp; Sage</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g7">❤️</div><div class="gallery-overlay"><span class="gallery-label">Cherry Red</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g8">🌊</div><div class="gallery-overlay"><span class="gallery-label">Ocean Blue</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g9">💖</div><div class="gallery-overlay"><span class="gallery-label">Rose Glitter</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g10">🍂</div><div class="gallery-overlay"><span class="gallery-label">Autumn Sunset</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g11">🩶</div><div class="gallery-overlay"><span class="gallery-label">Smoky Crystal</span></div></div>
-        <div class="gallery-tile fade-up"><div class="gallery-tile-bg g12">🔮</div><div class="gallery-overlay"><span class="gallery-label">Holographic</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nail,manicure&sig=101" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Classic French</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x600/?nailart,nail&sig=102" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Ombre Rose</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x450/?manicure,nails&sig=103" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Black Chrome</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x550/?eyelash,eyelashes&sig=104" alt="Eyelash extensions" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Volume Lashes</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nail,manicure&sig=105" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Gold Foil Art</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x600/?hair,hairstyle&sig=106" alt="Hair styling" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Blowout &amp; Style</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nailart,nails&sig=107" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Cherry Red</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x480/?spa,facial&sig=108" alt="Spa facial" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Glow Facial</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x550/?manicure,nail&sig=109" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Rose Glitter</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nailart,manicure&sig=110" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Autumn Sunset</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x600/?massage,wellness&sig=111" alt="Massage therapy" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Deep Tissue Massage</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nail,nailart&sig=112" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Holographic</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x550/?manicure,nails&sig=113" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Lavender Dream</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x480/?eyelash,beauty&sig=114" alt="Eyelash extensions" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Classic Lashes</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nail,manicure&sig=115" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Mint &amp; Sage</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x600/?hair,salon&sig=116" alt="Hair styling" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Color &amp; Cut</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nailart,nail&sig=117" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Ocean Blue</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x550/?spa,skincare&sig=118" alt="Spa treatment" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Hydration Treatment</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?manicure,nails&sig=119" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Smoky Crystal</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x600/?nail,nailart&sig=120" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Gel Full Set</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x480/?eyelash,eyelashes&sig=121" alt="Eyelash extensions" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Hybrid Lashes</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x550/?manicure,nail&sig=122" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">French Ombre</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x500/?nailart,nails&sig=123" alt="Nail art" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Floral Design</span></div></div>
+        <div class="gallery-tile fade-up"><img src="https://source.unsplash.com/400x600/?pedicure,feet&sig=124" alt="Pedicure" loading="lazy"><div class="gallery-overlay"><span class="gallery-label">Spa Pedicure</span></div></div>
       </div>
       <div class="gallery-cta fade-up">
         <a href="https://www.instagram.com/nailnook_lhc/" target="_blank" rel="noopener" class="btn-primary" style="margin-right:0.75rem;">
